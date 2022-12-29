@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "todo": {
+    "portfolioFrontEnd": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -38,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/todo",
+            "outputPath": "dist/portfolioFrontEnd",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -51,10 +51,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
@@ -88,10 +90,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "todo:build:production"
+              "browserTarget": "portfolioFrontEnd:build:production"
             },
             "development": {
-              "browserTarget": "todo:build:development"
+              "browserTarget": "portfolioFrontEnd:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -99,7 +101,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "todo:build"
+            "browserTarget": "portfolioFrontEnd:build"
           }
         },
         "test": {
