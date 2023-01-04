@@ -1,0 +1,67 @@
+<!-- <% include ../partials/header.ejs %> -->
+<app-header [title]="title"></app-header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="row">
+        <br>
+        <h1>{{ title }}</h1>
+        <!-- <h1>Business Contact List</h1> -->
+        <br>
+        <div>
+            <a routerLink="/inventory/add" class="btn btn-primary align-self-end" role="button">
+                <i class="fa-solid fa-user-plus"></i>
+                Add a New Item
+            </a>                
+        </div>
+        <br>
+        <button class="btn" *ngIf="this.repository.listReady == false">
+            <span class="spinner-border spinner-border-sm"></span>
+            Loading...
+        </button>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row-->
+                <tr>
+                    <th class="text-center">Item</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Size</th>
+                    <th class="text-center">Tags</th>
+                    <th class="text-center" colspan="2">Update/Delete</th>
+                </tr>
+
+                <!-- Repeatable Template Row -->
+
+                <!-- <% for(let count = 0; count < InventoryList.length; count++) { %> -->
+                    <tr *ngFor="let item of inventoryList">
+                        <td class="text-center">{{ item.item }}</td>
+                        <td class="text-center">{{ item.qty }}</td>
+                        <td class="text-center">{{ item.status }}</td>
+                        <td class="text-center">
+                            Hight: {{ item.size.h }}<br />
+                            Width: {{ item.size.w }}<br />
+                            UOM: {{ item.size.uom }}<br />
+                        </td>
+                        <td class="text-center">{{ item.tags }}</td>
+
+
+                        <td class="text-center">
+                            <a [routerLink]="['/inventory/edit/', item._id]" class="btn bg-primary btn-primary btn-sm">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+                <!-- <% } %> -->
+            </table>
+        </div>
+    </div>
+  </main>
+<!-- <%- include ../partials/footer.ejs %> -->
+<app-footer></app-footer>

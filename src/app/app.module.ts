@@ -4,7 +4,10 @@ import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { IndexModule } from "./components/index.module";
-import { IndexComponent } from "./components/index.component";
+import { InventoryModule } from "./components/inventory/inventory.module";
+import { AuthModule } from "./components/auth/auth.module";
+import { AppRoutingModule } from "./app-routing.module";
+import { AuthGuard } from './components/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -13,9 +16,12 @@ import { IndexComponent } from "./components/index.component";
   imports: [
     BrowserModule,
     FormsModule,
-    IndexModule
+    IndexModule,
+    InventoryModule,
+    AuthModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
